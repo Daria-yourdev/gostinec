@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Админ-панель - Гостинец</title>
+    <link rel="stylesheet" href="./assets/CSS/style.css">
+    <link rel="stylesheet" href="./assets/CSS/admin.css">
+    <link rel="shortcut icon" href="./assets/images/favicon.png" type="image/x-icon">
+</head>
+<body class="admin-body">
+
+<!-- АДМИН ХЕДЕР -->
+<header class="admin-header">
+    <div class="admin-header__content">
+        <div class="admin-header__logo">
+            <a href="index.html"><img src="./assets/images/logo.png" alt="Гостинец"></a>
+            <span class="admin-title">Админ-панель</span>
+        </div>
+        <div class="admin-header__user">
+            <button class="logout-btn">
+                <span class="admin-title">Выйти</span>
+            </button>
+        </div>
+    </div>
+</header>
+
+<!-- ОСНОВНОЙ КОНТЕНТ -->
+<div class="admin-container">
+    <!-- БОКОВОЕ МЕНЮ -->
+    <aside class="admin-sidebar">
+        <nav class="sidebar-nav">
+            <div class="nav-section">
+                <h3 class="nav-section__title">Управление</h3>
+                <ul class="nav-list">
+                    <li class="nav-item active" data-tab="products">
+<!--                        <img src="./assets/icons/products_icon.png" alt="Товары">-->
+                        <span>Товары</span>
+                    </li>
+                    <li class="nav-item" data-tab="categories">
+<!--                        <img src="./assets/icons/categories_icon.png" alt="Категории">-->
+                        <span>Категории</span>
+                    </li>
+                    <li class="nav-item" data-tab="orders">
+<!--                        <img src="./assets/icons/orders_icon.png" alt="Заказы">-->
+                        <span>Заказы</span>
+                    </li>
+                    <li class="nav-item" data-tab="users">
+<!--                        <img src="./assets/icons/users_icon.png" alt="Пользователи">-->
+                        <span>Пользователи</span>
+                    </li>
+                </ul>
+            </div>
+
+<!--            <div class="nav-section">-->
+<!--                <h3 class="nav-section__title">Система</h3>-->
+<!--                <ul class="nav-list">-->
+<!--                    <li class="nav-item" data-tab="settings">-->
+<!--                        <img src="./assets/icons/settings_icon.png" alt="Настройки">-->
+<!--                        <span>Настройки</span>-->
+<!--                    </li>-->
+<!--                    <li class="nav-item" data-tab="analytics">-->
+<!--                        <img src="./assets/icons/analytics_icon.png" alt="Аналитика">-->
+<!--                        <span>Аналитика</span>-->
+<!--                    </li>-->
+<!--                </ul>-->
+<!--            </div>-->
+        </nav>
+    </aside>
+
+    <!-- ОСНОВНАЯ ОБЛАСТЬ -->
+    <main class="admin-main">
+        <!-- ПАНЕЛЬ ДЕЙСТВИЙ -->
+        <div class="action-panel">
+            <div class="action-panel__left">
+                <h2 class="page-title" id="currentPageTitle">Управление товарами</h2>
+                <div class="breadcrumbs">
+                    <span>Главная</span>
+                    <span class="breadcrumb-divider">/</span>
+                    <span class="breadcrumb-active">Товары</span>
+                </div>
+            </div>
+            <div class="action-panel__right">
+                <button class="btn-primary" id="addNewBtn">
+<!--                    <img src="./assets/icons/add_icon.png" alt="Добавить">-->
+                    <span>Добавить новый</span>
+                </button>
+                <button class="btn-secondary" id="bulkDeleteBtn">
+<!--                    <img src="./assets/icons/delete_icon.png" alt="Удалить">-->
+                    <span>Удалить выбранные</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- ФИЛЬТРЫ -->
+        <div class="filters-panel">
+            <div class="filter-group">
+                <label for="dateFilter">Дата:</label>
+                <select id="dateFilter" class="filter-select">
+                    <option value="all">За все время</option>
+                    <option value="today">Сегодня</option>
+                    <option value="week">За неделю</option>
+                    <option value="month">За месяц</option>
+                    <option value="custom">Произвольный период</option>
+                </select>
+            </div>
+
+            <div class="filter-group">
+                <label for="statusFilter">Статус:</label>
+                <select id="statusFilter" class="filter-select">
+                    <option value="all">Все</option>
+                    <option value="active">Активные</option>
+                    <option value="inactive">Неактивные</option>
+                    <option value="draft">Черновики</option>
+                </select>
+            </div>
+
+            <div class="filter-group">
+                <label for="categoryFilter">Категория:</label>
+                <select id="categoryFilter" class="filter-select">
+                    <option value="all">Все категории</option>
+                    <option value="jam">Варенье</option>
+                    <option value="honey">Мед</option>
+                    <option value="berries">Ягоды</option>
+                </select>
+            </div>
+
+            <div class="filter-group">
+                <input type="text" id="searchFilter" class="search-input" placeholder="Поиск...">
+                <button class="search-btn">
+                    <img src="./assets/icons/search_icon.png" alt="Поиск">
+                </button>
+            </div>
+
+            <button class="btn-secondary" id="resetFiltersBtn">
+                <span>Сбросить</span>
+            </button>
+        </div>
+
+        <!-- ТАБЛИЦА -->
+        <div class="table-container">
+            <table class="data-table">
+                <thead>
+                <tr>
+                    <th class="checkbox-column">
+                        <input type="checkbox" id="selectAll">
+                    </th>
+                    <th class="id-column">ID</th>
+                    <th>Название</th>
+                    <th class="category-column">Категория</th>
+                    <th class="price-column">Цена</th>
+                    <th class="status-column">Статус</th>
+                    <th class="date-column">Дата создания</th>
+                    <th class="actions-column">Действия</th>
+                </tr>
+                </thead>
+                <tbody id="tableBody">
+                <!-- Данные будут заполняться JavaScript -->
+                </tbody>
+            </table>
+        </div>
+
+        <!-- ПАГИНАЦИЯ -->
+<!--        <div class="pagination">-->
+<!--            <div class="pagination-info">-->
+<!--                Показано <span id="showingCount">1-10</span> из <span id="totalCount">127</span>-->
+<!--            </div>-->
+<!--            <div class="pagination-controls">-->
+<!--                <button class="pagination-btn" id="prevPage" disabled>-->
+<!--                    <img src="./assets/icons/arrow_left.png" alt="Назад">-->
+<!--                </button>-->
+<!--                <div class="pagination-numbers">-->
+<!--                    <button class="page-number active">1</button>-->
+<!--                    <button class="page-number">2</button>-->
+<!--                    <button class="page-number">3</button>-->
+<!--                    <span class="page-ellipsis">...</span>-->
+<!--                    <button class="page-number">13</button>-->
+<!--                </div>-->
+<!--                <button class="pagination-btn" id="nextPage">-->
+<!--                    <img src="./assets/icons/arrow_right.png" alt="Вперед">-->
+<!--                </button>-->
+<!--            </div>-->
+<!--        </div>-->
+    </main>
+</div>
+
+<!-- МОДАЛЬНОЕ ОКНО ДОБАВЛЕНИЯ/РЕДАКТИРОВАНИЯ -->
+<div class="modal-overlay" id="itemModal" style="display: none;">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h3 id="modalTitle">Добавить товар</h3>
+            <button class="modal-close" id="closeModal">
+                <span>×</span>
+            </button>
+        </div>
+        <div class="modal-body">
+            <form id="itemForm">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="itemName">Название</label>
+                        <input type="text" id="itemName" class="form-input" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="itemCategory">Категория</label>
+                        <select id="itemCategory" class="form-input" required>
+                            <option value="">Выберите категорию</option>
+                            <option value="jam">Варенье</option>
+                            <option value="honey">Мед</option>
+                            <option value="berries">Ягоды</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="itemPrice">Цена (₽)</label>
+                        <input type="number" id="itemPrice" class="form-input" min="0" step="0.01" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="itemStatus">Статус</label>
+                        <select id="itemStatus" class="form-input" required>
+                            <option value="active">Активный</option>
+                            <option value="inactive">Неактивный</option>
+                            <option value="draft">Черновик</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="itemDescription">Описание</label>
+                    <textarea id="itemDescription" class="form-textarea" rows="4"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="itemImage">Изображение</label>
+                    <input type="file" id="itemImage" class="form-input" accept="image/*">
+                </div>
+            </form>
+        </div>
+        <div class="modal-footer">
+            <button class="btn-secondary" id="cancelBtn">Отмена</button>
+            <button class="btn-primary" id="saveBtn">Сохранить</button>
+        </div>
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Данные для таблицы (в реальном приложении будут загружаться с сервера)
+        const tableData = {
+            products: [
+                { id: 1, name: 'Вишневое варенье', category: 'Варенье', price: 150, status: 'active', date: '2024-12-15' },
+                { id: 2, name: 'Абрикосовое варенье', category: 'Варенье', price: 150, status: 'active', date: '2024-12-14' },
+                { id: 3, name: 'Лимонное варенье', category: 'Варенье', price: 150, status: 'active', date: '2024-12-13' },
+                { id: 4, name: 'Малиновое варенье', category: 'Варенье', price: 150, status: 'inactive', date: '2024-12-12' },
+                { id: 5, name: 'Ежевичное варенье', category: 'Варенье', price: 150, status: 'active', date: '2024-12-11' },
+                { id: 6, name: 'Клубничное варенье', category: 'Варенье', price: 150, status: 'draft', date: '2024-12-10' },
+                { id: 7, name: 'Смородиновое варенье', category: 'Варенье', price: 150, status: 'active', date: '2024-12-09' },
+                { id: 8, name: 'Цветочный мед', category: 'Мед', price: 300, status: 'active', date: '2024-12-08' },
+                { id: 9, name: 'Гречишный мед', category: 'Мед', price: 350, status: 'active', date: '2024-12-07' },
+                { id: 10, name: 'Лесные ягоды', category: 'Ягоды', price: 200, status: 'active', date: '2024-12-06' }
+            ],
+            users: [
+                { id: 1, name: 'Мария Иванова', email: 'maria@example.com', role: 'Пользователь', status: 'active', date: '2024-11-15' },
+                { id: 2, name: 'Иван Петров', email: 'ivan@example.com', role: 'Пользователь', status: 'active', date: '2024-11-10' },
+                { id: 3, name: 'Анна Сидорова', email: 'anna@example.com', role: 'Модератор', status: 'active', date: '2024-11-05' },
+                { id: 4, name: 'Петр Васильев', email: 'petr@example.com', role: 'Пользователь', status: 'inactive', date: '2024-10-28' }
+            ],
+            orders: [
+                { id: 24567, name: 'Заказ №24567', category: 'Варенье', price: 450, status: 'delivered', date: '2024-12-15' },
+                { id: 23891, name: 'Заказ №23891', category: 'Варенье', price: 600, status: 'processing', date: '2024-12-05' },
+                { id: 22145, name: 'Заказ №22145', category: 'Мед', price: 300, status: 'cancelled', date: '2024-11-20' }
+            ],
+            categories: [
+                { id: 1, name: 'Варенье', description: 'Фруктовые и ягодные варенья', status: 'active', date: '2024-10-15' },
+                { id: 2, name: 'Мед', description: 'Натуральный цветочный мед', status: 'active', date: '2024-10-10' },
+                { id: 3, name: 'Ягоды', description: 'Свежие и замороженные ягоды', status: 'active', date: '2024-10-05' }
+            ]
+        };
+
+        // Элементы DOM
+        const navItems = document.querySelectorAll('.nav-item');
+        const tableBody = document.getElementById('tableBody');
+        const currentPageTitle = document.getElementById('currentPageTitle');
+        const selectAllCheckbox = document.getElementById('selectAll');
+        const addNewBtn = document.getElementById('addNewBtn');
+        const bulkDeleteBtn = document.getElementById('bulkDeleteBtn');
+        const modal = document.getElementById('itemModal');
+        const closeModalBtn = document.getElementById('closeModal');
+        const cancelBtn = document.getElementById('cancelBtn');
+        const saveBtn = document.getElementById('saveBtn');
+        const modalTitle = document.getElementById('modalTitle');
+        const itemForm = document.getElementById('itemForm');
+
+        let currentTab = 'products';
+        let selectedItems = new Set();
+
+        // Инициализация
+        loadTableData(currentTab);
+
+        // Обработчики событий для навигации
+        navItems.forEach(item => {
+            item.addEventListener('click', function() {
+                const tab = this.dataset.tab;
+
+                // Обновляем активный элемент навигации
+                navItems.forEach(navItem => navItem.classList.remove('active'));
+                this.classList.add('active');
+
+                // Загружаем данные для выбранной вкладки
+                currentTab = tab;
+                loadTableData(tab);
+                updatePageTitle(tab);
+            });
+        });
+
+        // Выбор всех элементов
+        selectAllCheckbox.addEventListener('change', function() {
+            const checkboxes = document.querySelectorAll('.item-checkbox');
+            checkboxes.forEach(checkbox => {
+                checkbox.checked = this.checked;
+                const itemId = checkbox.dataset.id;
+                if (this.checked) {
+                    selectedItems.add(itemId);
+                } else {
+                    selectedItems.delete(itemId);
+                }
+            });
+            updateBulkDeleteButton();
+        });
+
+        // Добавление нового элемента
+        addNewBtn.addEventListener('click', function() {
+            modalTitle.textContent = `Добавить ${getItemName(currentTab)}`;
+            itemForm.reset();
+            modal.style.display = 'flex';
+        });
+
+        // Закрытие модального окна
+        closeModalBtn.addEventListener('click', closeModal);
+        cancelBtn.addEventListener('click', closeModal);
+
+        // Сохранение элемента
+        saveBtn.addEventListener('click', function() {
+            if (itemForm.checkValidity()) {
+                // В реальном приложении здесь будет отправка данных на сервер
+                alert('Данные успешно сохранены!');
+                closeModal();
+                // Обновляем таблицу
+                loadTableData(currentTab);
+            } else {
+                alert('Пожалуйста, заполните все обязательные поля');
+            }
+        });
+
+        // Массовое удаление
+        bulkDeleteBtn.addEventListener('click', function() {
+            if (selectedItems.size === 0) {
+                alert('Выберите элементы для удаления');
+                return;
+            }
+
+            if (confirm(`Вы уверены, что хотите удалить ${selectedItems.size} элементов?`)) {
+                // В реальном приложении здесь будет отправка запроса на удаление
+                alert(`Удалено ${selectedItems.size} элементов`);
+                selectedItems.clear();
+                loadTableData(currentTab);
+            }
+        });
+
+        // Функции
+        function loadTableData(tab) {
+            const data = tableData[tab] || [];
+            tableBody.innerHTML = '';
+
+            data.forEach(item => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td class="checkbox-column">
+                        <input type="checkbox" class="item-checkbox" data-id="${item.id}">
+                    </td>
+                    <td class="id-column">${item.id}</td>
+                    <td>${item.name}</td>
+                    <td class="category-column">${item.category}</td>
+                    <td class="price-column">${item.price} ₽</td>
+                    <td class="status-column">
+                        <span class="status-badge status-${item.status}">${getStatusText(item.status)}</span>
+                    </td>
+                    <td class="date-column">${formatDate(item.date)}</td>
+                    <td class="actions-column">
+                        <button class="action-btn edit-btn" data-id="${item.id}">
+                            <img src="./assets/icons/edit-icon.png" alt="Редактировать">
+                        </button>
+                        <button class="action-btn delete-btn" data-id="${item.id}">
+                            <img src="./assets/icons/delete-icon.png" alt="Удалить">
+                        </button>
+                    </td>
+                `;
+                tableBody.appendChild(row);
+            });
+
+            // Добавляем обработчики событий для чекбоксов
+            document.querySelectorAll('.item-checkbox').forEach(checkbox => {
+                checkbox.addEventListener('change', function() {
+                    const itemId = this.dataset.id;
+                    if (this.checked) {
+                        selectedItems.add(itemId);
+                    } else {
+                        selectedItems.delete(itemId);
+                        selectAllCheckbox.checked = false;
+                    }
+                    updateBulkDeleteButton();
+                });
+            });
+
+            // Добавляем обработчики для кнопок действий
+            document.querySelectorAll('.edit-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const itemId = this.dataset.id;
+                    editItem(itemId);
+                });
+            });
+
+            document.querySelectorAll('.delete-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const itemId = this.dataset.id;
+                    deleteItem(itemId);
+                });
+            });
+
+            // Сбрасываем выбор всех
+            selectAllCheckbox.checked = false;
+            selectedItems.clear();
+            updateBulkDeleteButton();
+        }
+
+        function updatePageTitle(tab) {
+            const titles = {
+                products: 'Управление товарами',
+                categories: 'Управление категориями',
+                orders: 'Управление заказами',
+                users: 'Управление пользователями',
+                settings: 'Настройки системы',
+                analytics: 'Аналитика'
+            };
+            currentPageTitle.textContent = titles[tab] || 'Админ-панель';
+        }
+
+        function getItemName(tab) {
+            const names = {
+                products: 'товар',
+                categories: 'категорию',
+                orders: 'заказ',
+                users: 'пользователя'
+            };
+            return names[tab] || 'элемент';
+        }
+
+        function getStatusText(status) {
+            const statuses = {
+                active: 'Активный',
+                inactive: 'Неактивный',
+                draft: 'Черновик',
+                delivered: 'Доставлен',
+                processing: 'В обработке',
+                cancelled: 'Отменен'
+            };
+            return statuses[status] || status;
+        }
+
+        function formatDate(dateString) {
+            const date = new Date(dateString);
+            return date.toLocaleDateString('ru-RU');
+        }
+
+        function updateBulkDeleteButton() {
+            bulkDeleteBtn.disabled = selectedItems.size === 0;
+        }
+
+        function closeModal() {
+            modal.style.display = 'none';
+        }
+
+        function editItem(id) {
+            modalTitle.textContent = `Редактировать ${getItemName(currentTab)}`;
+            // В реальном приложении здесь будет загрузка данных элемента
+            modal.style.display = 'flex';
+        }
+
+        function deleteItem(id) {
+            if (confirm('Вы уверены, что хотите удалить этот элемент?')) {
+                // В реальном приложении здесь будет отправка запроса на удаление
+                alert('Элемент успешно удален');
+                loadTableData(currentTab);
+            }
+        }
+    });
+</script>
+
+</body>
+</html>

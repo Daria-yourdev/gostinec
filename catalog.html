@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Гостинец</title>
+    <link rel="stylesheet" href="./assets/CSS/style.css">
+    <link rel="stylesheet" href="./assets/CSS/catalog.css">
+    <script src="./assets/JS/main.js"></script>
+    <link rel="shortcut icon" href="./assets/images/favicon.png" type="image/x-icon">
+</head>
+<body>
+
+<!-- UP SCROLL BOTTOM -->
+<button class="scroll-to-top" aria-label="Наверх">
+    <span>↑</span>
+</button>
+
+<!--HEADER-->
+<header>
+    <div class="header-top__bg">
+        <div class="header-top container">
+            <div class="header-top__location">
+                <img src="./assets/images/map_icon.png" alt="">
+                <div class="nav_title">Республика Татарстан</div>
+            </div>
+
+            <!-- HEADER NAV_TOP -->
+            <nav class="header-top__nav">
+                <a class="nav_title" href="index.html#banner">Начало</a>
+                <a class="nav_title" href="catalog.html">Закрома</a>
+                <div class="nav_title">Про варево</div>
+                <a class="nav_title" href="#feedbacks">Голоса</a>
+                <a class="nav_title" href="profile.html">Обрести банку</a>
+                <a class="nav_title" href="admin.html">Админ</a>
+            </nav>
+        </div>
+    </div>
+
+    <div class="header-button container">
+        <img src="./assets/images/logo.png" alt="">
+
+        <!-- SEARCH BAR -->
+        <div class="search-bar">
+            <img src="./assets/icons/search_icon.png" alt="search" class="search-icon">
+            <input type="text" placeholder="Что ищешь? Варенье на зиму..." class="search-input nav_title">
+            <button class="btn">
+                <p class="nav_title">Искать угощения</p>
+                <img class="search-btn" src="./assets/icons/search_bottom.png" alt="">
+            </button>
+        </div>
+
+        <!-- HEADER NAV_BUTTON -->
+        <div class="header-button__nav">
+            <a href="cart.html">
+                <div class="header-button__nav-item">
+                    <div class="nav_item__icon">
+                        <p>3</p>
+                        <img src="./assets/icons/cart_icon.png" class="icon-default" alt="">
+                        <img src="./assets/icons/cart_icon__hover.png" class="icon-hover" alt="">
+                    </div>
+                    <div class="nav_title nav-item__title">Запасы</div>
+                </div>
+            </a>
+
+            <div class="header-button__nav-item">
+                <div class="nav_item__icon">
+                    <p class="orders_navcount">2</p>
+                    <img src="./assets/icons/orders_icon.png" class="icon-default" alt="">
+                    <img src="./assets/icons/orders_icon__hover.png" class="icon-hover" alt="">
+                </div>
+                <div class="nav_title nav-item__title">Заказы</div>
+            </div>
+
+            <a href="profile.html">
+                <div class="header-button__nav-item" id="loginButton">
+                    <div class="nav_item__icon">
+                        <img src="./assets/icons/login_icon.png" class="icon-default" alt="">
+                        <img src="./assets/icons/login_icon__hover.png" class="icon-hover" alt="">
+                    </div>
+                    <div class="nav_title nav-item__title">Войти</div>
+                </div>
+            </a>
+        </div>
+    </div>
+</header>
+
+<!-- CATALOG TITLE -->
+<section class="catalog-title">
+    <h1 class="title_h1">ЗАКРОМА</h1>
+    <img class="catalog-img" src="./assets/images/feedback/fb_icon.png" alt="">
+</section>
+
+<!-- CATALOG MAIN -->
+<section class="catalog container c-padding">
+    <div class="catalog-wrapper">
+        <div class="catalog-filter">
+            <div class="filter-header">
+                <h4 class="title_h2">Фильтры</h4>
+                <button class="reset-filters nav_title">Сбросить всё</button>
+            </div>
+
+            <!-- FILTERS -->
+<!--            <div class="filter-group">-->
+<!--                <h5 class="title_h3">Сортировка</h5>-->
+<!--                <select class="filter-select" id="sortSelect">-->
+<!--                    <option value="price-asc">По цене (сначала дешевые)</option>-->
+<!--                    <option value="price-desc">По цене (сначала дорогие)</option>-->
+<!--                    <option value="name">По названию</option>-->
+<!--                </select>-->
+<!--            </div>-->
+
+            <!-- По типу ягод -->
+            <div class="filter-group">
+                <h5 class="title_h3">Тип варенья</h5>
+                <div class="checkbox-group">
+                    <label><input type="checkbox" name="type" value="cherry"> Вишневое</label>
+                    <label><input type="checkbox" name="type" value="apricot"> Абрикосовое</label>
+                    <label><input type="checkbox" name="type" value="lemon"> Лимонное</label>
+                    <label><input type="checkbox" name="type" value="raspberry"> Малиновое</label>
+                    <label><input type="checkbox" name="type" value="blackberry"> Ежевичное</label>
+                    <label><input type="checkbox" name="type" value="strawberry"> Клубничное</label>
+                    <label><input type="checkbox" name="type" value="currant"> Смородиновое</label>
+                </div>
+            </div>
+
+            <!-- Диетические предпочтения -->
+            <div class="filter-group">
+                <h5 class="title_h3">Особенности</h5>
+                <div class="checkbox-group">
+                    <label><input type="checkbox" name="diet" value="vegan"> Веганское</label>
+                    <label><input type="checkbox" name="diet" value="sugar-free"> Без сахара</label>
+                    <label><input type="checkbox" name="diet" value="organic"> Органическое</label>
+                    <label><input type="checkbox" name="diet" value="homemade"> Домашнее</label>
+                </div>
+            </div>
+
+            <!-- Цена -->
+            <div class="filter-group">
+                <h5 class="title_h3">Цена, ₽</h5>
+                <div class="price-inputs">
+                    <div class="price-input-group">
+                        <label>От</label>
+                        <input type="number" id="priceMin" min="0" max="1000" value="100" class="price-input">
+                    </div>
+                    <div class="price-input-group">
+                        <label>До</label>
+                        <input type="number" id="priceMax" min="100" max="1000" value="500" class="price-input">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Состав -->
+            <div class="filter-group">
+                <h5 class="title_h3">Исключить в составе</h5>
+                <div class="checkbox-group">
+                    <label><input type="checkbox" name="exclude" value="sugar"> Сахар</label>
+                    <label><input type="checkbox" name="exclude" value="preservatives"> Консерванты</label>
+                    <label><input type="checkbox" name="exclude" value="artificial"> Искусственные добавки</label>
+                    <label><input type="checkbox" name="exclude" value="gluten"> Глютен</label>
+                </div>
+            </div>
+
+            <!-- Объем -->
+            <div class="filter-group">
+                <h5 class="title_h3">Объем</h5>
+                <div class="checkbox-group">
+                    <label><input type="checkbox" name="volume" value="250"> 250 г</label>
+                    <label><input type="checkbox" name="volume" value="500"> 500 г</label>
+                    <label><input type="checkbox" name="volume" value="1000"> 1 кг</label>
+                </div>
+            </div>
+
+            <!-- Кнопки фильтра -->
+            <div class="filter-buttons">
+                <button class="btn apply-filters">
+                    <p class="nav_title">Показать товары</p>
+                    <img class="search-btn" src="./assets/icons/search_bottom.png" alt="">
+                </button>
+            </div>
+        </div>
+
+        <div class="catalog-cards">
+            <a href="one-product.html">
+                <div class="mini-catalog__card">
+                    <div class="mini-catalog__image">
+                        <img src="./assets/images/mini__catalog/mini__calalog-1.png" alt="Абрикосовое варенье"
+                             class="mini-catalog__img-default">
+                        <img src="./assets/images/mini__catalog/mini__calalog-1__hover.png" alt="Абрикосовое варенье"
+                             class="mini-catalog__img-hover">
+                    </div>
+                    <div class="mini-catalog__titles">
+                        <div class="title_h3">Вишневое варенье</div>
+                        <div class="mini-catalog__price">150 ₽ <span>/ 100 гр.</span></div>
+                    </div>
+
+                    <button class="btn-hover">
+                        <p class="nav_title">Собрать в запасы</p>
+                        <img class="btn-hover__overlay-default" src="./assets/icons/cart_bottom__hover.png" alt="">
+                        <img class="btn-hover__overlay" src="./assets/icons/cart_bottom.png" alt="">
+                    </button>
+                </div>
+            </a>
+
+
+            <div class="mini-catalog__card">
+                <div class="mini-catalog__image">
+                    <img src="./assets/images/mini__catalog/mini__calalog-2.png" alt="Абрикосовое варенье"
+                         class="mini-catalog__img-default">
+                    <img src="./assets/images/mini__catalog/mini__calalog-2__hover.png" alt="Абрикосовое варенье"
+                         class="mini-catalog__img-hover">
+                </div>
+                <div class="mini-catalog__titles">
+                    <div class="title_h3">Абрикосовое варенье</div>
+                    <div class="mini-catalog__price">150 ₽ <span>/ 100 гр.</span></div>
+                </div>
+
+                <button class="btn-hover">
+                    <p class="nav_title">Собрать в запасы</p>
+                    <img class="btn-hover__overlay-default" src="./assets/icons/cart_bottom__hover.png" alt="">
+                    <img class="btn-hover__overlay" src="./assets/icons/cart_bottom.png" alt="">
+                </button>
+            </div>
+
+            <div class="mini-catalog__card">
+                <div class="mini-catalog__image">
+                    <img src="./assets/images/mini__catalog/mini__calalog-3.png" alt="Абрикосовое варенье"
+                         class="mini-catalog__img-default">
+                    <img src="./assets/images/mini__catalog/mini__calalog-3__hover.png" alt="Абрикосовое варенье"
+                         class="mini-catalog__img-hover">
+                </div>
+                <div class="mini-catalog__titles">
+                    <div class="title_h3">Лимонное варенье</div>
+                    <div class="mini-catalog__price">150 ₽ <span>/ 100 гр.</span></div>
+                </div>
+
+                <button class="btn-hover">
+                    <p class="nav_title">Собрать в запасы</p>
+                    <img class="btn-hover__overlay-default" src="./assets/icons/cart_bottom__hover.png" alt="">
+                    <img class="btn-hover__overlay" src="./assets/icons/cart_bottom.png" alt="">
+                </button>
+            </div>
+
+            <div class="mini-catalog__card">
+                <div class="mini-catalog__image">
+                    <img src="./assets/images/mini__catalog/mini__calalog-1.png" alt="Абрикосовое варенье"
+                         class="mini-catalog__img-default">
+                    <img src="./assets/images/mini__catalog/mini__calalog-1__hover.png" alt="Абрикосовое варенье"
+                         class="mini-catalog__img-hover">
+                </div>
+                <div class="mini-catalog__titles">
+                    <div class="title_h3">Малиновое варенье</div>
+                    <div class="mini-catalog__price">150 ₽ <span>/ 100 гр.</span></div>
+                </div>
+
+                <button class="btn-hover">
+                    <p class="nav_title">Собрать в запасы</p>
+                    <img class="btn-hover__overlay-default" src="./assets/icons/cart_bottom__hover.png" alt="">
+                    <img class="btn-hover__overlay" src="./assets/icons/cart_bottom.png" alt="">
+                </button>
+            </div>
+
+            <div class="mini-catalog__card">
+                <div class="mini-catalog__image">
+                    <img src="./assets/images/mini__catalog/mini__calalog-5.png" alt="Абрикосовое варенье"
+                         class="mini-catalog__img-default">
+                    <img src="./assets/images/mini__catalog/mini__calalog-5__hover.png" alt="Абрикосовое варенье"
+                         class="mini-catalog__img-hover">
+                </div>
+                <div class="mini-catalog__titles">
+                    <div class="title_h3">Ожиновое варенье</div>
+                    <div class="mini-catalog__price">150 ₽ <span>/ 100 гр.</span></div>
+                </div>
+
+                <button class="btn-hover">
+                    <p class="nav_title">Собрать в запасы</p>
+                    <img class="btn-hover__overlay-default" src="./assets/icons/cart_bottom__hover.png" alt="">
+                    <img class="btn-hover__overlay" src="./assets/icons/cart_bottom.png" alt="">
+                </button>
+            </div>
+
+            <div class="mini-catalog__card">
+                <div class="mini-catalog__image">
+                    <img src="./assets/images/mini__catalog/mini__calalog-1.png" alt="Абрикосовое варенье"
+                         class="mini-catalog__img-default">
+                    <img src="./assets/images/mini__catalog/mini__calalog-1__hover.png" alt="Абрикосовое варенье"
+                         class="mini-catalog__img-hover">
+                </div>
+                <div class="mini-catalog__titles">
+                    <div class="title_h3">Вишневое варенье</div>
+                    <div class="mini-catalog__price">150 ₽ <span>/ 100 гр.</span></div>
+                </div>
+
+                <button class="btn-hover">
+                    <p class="nav_title">Собрать в запасы</p>
+                    <img class="btn-hover__overlay-default" src="./assets/icons/cart_bottom__hover.png" alt="">
+                    <img class="btn-hover__overlay" src="./assets/icons/cart_bottom.png" alt="">
+                </button>
+            </div>
+
+            <div class="mini-catalog__card">
+                <div class="mini-catalog__image">
+                    <img src="./assets/images/mini__catalog/mini__calalog-2.png" alt="Абрикосовое варенье"
+                         class="mini-catalog__img-default">
+                    <img src="./assets/images/mini__catalog/mini__calalog-2__hover.png" alt="Абрикосовое варенье"
+                         class="mini-catalog__img-hover">
+                </div>
+                <div class="mini-catalog__titles">
+                    <div class="title_h3">Абрикосовое варенье</div>
+                    <div class="mini-catalog__price">150 ₽ <span>/ 100 гр.</span></div>
+                </div>
+
+                <button class="btn-hover">
+                    <p class="nav_title">Собрать в запасы</p>
+                    <img class="btn-hover__overlay-default" src="./assets/icons/cart_bottom__hover.png" alt="">
+                    <img class="btn-hover__overlay" src="./assets/icons/cart_bottom.png" alt="">
+                </button>
+            </div>
+
+            <div class="mini-catalog__card">
+                <div class="mini-catalog__image">
+                    <img src="./assets/images/mini__catalog/mini__calalog-3.png" alt="Абрикосовое варенье"
+                         class="mini-catalog__img-default">
+                    <img src="./assets/images/mini__catalog/mini__calalog-3__hover.png" alt="Абрикосовое варенье"
+                         class="mini-catalog__img-hover">
+                </div>
+                <div class="mini-catalog__titles">
+                    <div class="title_h3">Лимонное варенье</div>
+                    <div class="mini-catalog__price">150 ₽ <span>/ 100 гр.</span></div>
+                </div>
+
+                <button class="btn-hover">
+                    <p class="nav_title">Собрать в запасы</p>
+                    <img class="btn-hover__overlay-default" src="./assets/icons/cart_bottom__hover.png" alt="">
+                    <img class="btn-hover__overlay" src="./assets/icons/cart_bottom.png" alt="">
+                </button>
+            </div>
+
+            <div class="mini-catalog__card">
+                <div class="mini-catalog__image">
+                    <img src="./assets/images/mini__catalog/mini__calalog-5.png" alt="Абрикосовое варенье"
+                         class="mini-catalog__img-default">
+                    <img src="./assets/images/mini__catalog/mini__calalog-5__hover.png" alt="Абрикосовое варенье"
+                         class="mini-catalog__img-hover">
+                </div>
+                <div class="mini-catalog__titles">
+                    <div class="title_h3">Ожиновое варенье</div>
+                    <div class="mini-catalog__price">150 ₽ <span>/ 100 гр.</span></div>
+                </div>
+
+                <button class="btn-hover">
+                    <p class="nav_title">Собрать в запасы</p>
+                    <img class="btn-hover__overlay-default" src="./assets/icons/cart_bottom__hover.png" alt="">
+                    <img class="btn-hover__overlay" src="./assets/icons/cart_bottom.png" alt="">
+                </button>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- PRE FOOTER LINE -->
+<section class="banner" id="banner">
+    <img class="banner-print" src="./assets/images/main__slider/print.png" alt="">
+</section>
+
+<!-- FOOTER -->
+<footer class="footer container">
+    <div class="footer_left">
+        <img src="./assets/images/logo.png" alt="" class="logo">
+
+        <div class="footer_contacts">
+            <div class="footer-tel">
+                <img src="./assets/icons/tel_icon.png" alt="">
+
+                <div class="text_info">
+                    <p class="nav_title nav-item__title">Контактный телефон</p>
+                    <a href="tel: 78123090934" class="title_h3">+ 7 (812) 309-09-34</a>
+                    <a href="tel: 78123090934" class="title_h3">+ 7 (965) 084-29-09</a>
+                </div>
+            </div>
+
+            <div class="footer-tel">
+                <img src="./assets/icons/mail_icon.png" alt="">
+                <div class="text_info">
+                    <p class="nav_title nav-item__title">Электронная почта</p>
+                    <a href="mailto: tustin78@mail.ru" class="title_h3">tustin78@mail.ru</a>
+                    <a href="mailto: info@tustin.ru" class="title_h3">gglinfo@tustin.ru</a>
+                </div>
+            </div>
+        </div>
+
+        <nav class="header-top__nav">
+            <a class="nav_title" href="#banner">Начало</a>
+            <div class="nav_title">Закрома</div>
+            <div class="nav_title">Про варево</div>
+            <a class="nav_title" href="#feedbacks">Голоса</a>
+            <div class="nav_title">Обрести банку</div>
+            <div class="nav_title">Оракул ягод</div>
+        </nav>
+
+        <p class="nav_title nav-item__title">Разработчик: Пирогова Дарья Денисовна</p>
+    </div>
+
+    <div class="footer_right">
+        <h2 class="title_h2">Первый заказ?</h2>
+        <p class="description">Узнавайте первым о скидках, предложениях и событиях еженедельно в своем <br>почтовом
+            ящике. Отпишитесь в любое время одним щелчком мыши.</p>
+
+        <input type="text" placeholder="Введите email..." class="search-input nav_title">
+        <button class="btn-hover">
+            <p class="nav_title">Подписаться на скидки</p>
+            <img class="btn-hover__overlay-default" src="./assets/icons/footer_bottom.png" alt="">
+            <img class="btn-hover__overlay" src="./assets/icons/footer_bottom__hover.png" alt="">
+        </button>
+
+        <p class="nav_title nav-item__title footer-desc">© 2025-2026, KTITS</p>
+    </div>
+</footer>
+
+</body>
+</html>

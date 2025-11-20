@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Гостинец</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./assets/CSS/style.css">
+    <script src="./assets/JS/main.js"></script>
+    <link rel="shortcut icon" href="./assets/images/favicon.png" type="image/x-icon">
+</head>
+<body>
+
+<!-- UP SCROLL BOTTOM -->
+<button class="scroll-to-top" aria-label="Наверх">
+    <span>↑</span>
+</button>
+
+<!--HEADER-->
+<header>
+    <div class="header-top__bg">
+        <div class="header-top container">
+            <div class="header-top__location">
+                <img src="./assets/images/map_icon.png" alt="">
+                <div class="nav_title">Республика Татарстан</div>
+            </div>
+
+            <!-- HEADER NAV_TOP -->
+            <nav class="header-top__nav">
+                <a class="nav_title" href="index.html#banner">Начало</a>
+                <a class="nav_title" href="catalog.html">Закрома</a>
+                <div class="nav_title">Про варево</div>
+                <a class="nav_title" href="#feedbacks">Голоса</a>
+                <a class="nav_title" href="profile.html">Обрести банку</a>
+                <a class="nav_title" href="admin.html">Админ</a>
+            </nav>
+        </div>
+    </div>
+
+    <!-- Бургер-меню -->
+    <button class="burger-menu" id="burgerMenu">
+        <span class="burger-line"></span>
+        <span class="burger-line"></span>
+        <span class="burger-line"></span>
+    </button>
+
+    <!-- Мобильное меню -->
+    <div class="mobile-menu" id="mobileMenu">
+        <div class="mobile-menu__content">
+            <nav class="mobile-nav">
+                <a class="mobile-nav__item" href="index.html#banner" onclick="closeMobileMenu()">Начало</a>
+                <a class="mobile-nav__item" href="catalog.html" onclick="closeMobileMenu()">Закрома</a>
+                <a class="mobile-nav__item" href="#feedbacks" onclick="closeMobileMenu()">Голоса</a>
+                <a class="mobile-nav__item" href="profile.html" onclick="closeMobileMenu()">Обрести банку</a>
+                <a class="mobile-nav__item" href="admin.html" onclick="closeMobileMenu()">Админ</a>
+                <div class="mobile-nav__item">Про варево</div>
+            </nav>
+
+            <div class="mobile-menu__contacts">
+                <a href="tel:+78123090934" class="mobile-contact__item">
+                    <img src="./assets/icons/tel_icon.png" alt="Телефон">
+                    <span>+7 (812) 309-09-34</span>
+                </a>
+                <a href="tel:+79650842909" class="mobile-contact__item">
+                    <img src="./assets/icons/tel_icon.png" alt="Телефон">
+                    <span>+7 (965) 084-29-09</span>
+                </a>
+                <a href="mailto:tustin78@mail.ru" class="mobile-contact__item">
+                    <img src="./assets/icons/mail_icon.png" alt="Почта">
+                    <span>tustin78@mail.ru</span>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="mobile-menu__overlay" id="mobileMenuOverlay"></div>
+
+    <div class="header-button container">
+        <img src="./assets/images/logo.png" alt="">
+
+        <!-- SEARCH BAR -->
+        <div class="search-bar">
+            <img src="./assets/icons/search_icon.png" alt="search" class="search-icon">
+            <input type="text" placeholder="Что ищешь? Варенье на зиму..." class="search-input nav_title">
+            <button class="btn">
+                <p class="nav_title">Искать угощения</p>
+                <img class="search-btn" src="./assets/icons/search_bottom.png" alt="">
+            </button>
+        </div>
+
+        <!-- HEADER NAV_BUTTON -->
+        <div class="header-button__nav">
+            <a href="cart.html">
+                <div class="header-button__nav-item">
+                    <div class="nav_item__icon">
+                        <p>3</p>
+                        <img src="./assets/icons/cart_icon.png" class="icon-default" alt="">
+                        <img src="./assets/icons/cart_icon__hover.png" class="icon-hover" alt="">
+                    </div>
+                    <div class="nav_title nav-item__title">Запасы</div>
+                </div>
+            </a>
+
+            <div class="header-button__nav-item">
+                <div class="nav_item__icon">
+                    <p class="orders_navcount">2</p>
+                    <img src="./assets/icons/orders_icon.png" class="icon-default" alt="">
+                    <img src="./assets/icons/orders_icon__hover.png" class="icon-hover" alt="">
+                </div>
+                <div class="nav_title nav-item__title">Заказы</div>
+            </div>
+
+            <a href="profile.html">
+                <div class="header-button__nav-item" id="loginButton">
+                    <div class="nav_item__icon">
+                        <img src="./assets/icons/login_icon.png" class="icon-default" alt="">
+                        <img src="./assets/icons/login_icon__hover.png" class="icon-hover" alt="">
+                    </div>
+                    <div class="nav_title nav-item__title">Войти</div>
+                </div>
+            </a>
+        </div>
+    </div>
+</header>
+
+<!-- BANNER -->
+<section class="banner" id="banner">
+    <div class="banner-slider">
+        <div class="banner-slider__container"></div>
+
+        <div class="banner-content">
+            <img class="banner-title" src="./assets/images/banner_title.png" alt="">
+            <p class="banner-text">Ягоды варили — и они зашептали</p>
+        </div>
+    </div>
+
+    <img class="banner-print" src="./assets/images/main__slider/print.png" alt="">
+</section>
+
+<!-- MINI CATALOG -->
+<section class="mini-catalog container c-padding" id="mini-catalog">
+    <h2 class="title_h2">ВЫБОР ИЗ ЗАКРОМОВ</h2>
+    <p class="description">Наше варенье — не просто вкус. Это гостинец: знак внимания, древний обычай делиться тем, что
+        создано с теплом и тайной.</p>
+
+    <div class="mini-catalog__cards">
+        <div class="mini-catalog__card">
+            <div class="mini-catalog__image">
+                <img src="./assets/images/mini__catalog/mini__calalog-1.png" alt="Абрикосовое варенье"
+                     class="mini-catalog__img-default">
+                <img src="./assets/images/mini__catalog/mini__calalog-1__hover.png" alt="Абрикосовое варенье"
+                     class="mini-catalog__img-hover">
+            </div>
+            <div class="mini-catalog__titles">
+                <div class="title_h3">Вишневое варенье</div>
+                <div class="mini-catalog__price">150 ₽ <span>/ 100 гр.</span></div>
+            </div>
+
+            <button class="btn-hover">
+                <p class="nav_title">Собрать в запасы</p>
+                <img class="btn-hover__overlay-default" src="./assets/icons/cart_bottom__hover.png" alt="">
+                <img class="btn-hover__overlay" src="./assets/icons/cart_bottom.png" alt="">
+            </button>
+        </div>
+
+        <div class="mini-catalog__card">
+            <div class="mini-catalog__image">
+                <img src="./assets/images/mini__catalog/mini__calalog-2.png" alt="Абрикосовое варенье"
+                     class="mini-catalog__img-default">
+                <img src="./assets/images/mini__catalog/mini__calalog-2__hover.png" alt="Абрикосовое варенье"
+                     class="mini-catalog__img-hover">
+            </div>
+            <div class="mini-catalog__titles">
+                <div class="title_h3">Абрикосовое варенье</div>
+                <div class="mini-catalog__price">150 ₽ <span>/ 100 гр.</span></div>
+            </div>
+
+            <button class="btn-hover">
+                <p class="nav_title">Собрать в запасы</p>
+                <img class="btn-hover__overlay-default" src="./assets/icons/cart_bottom__hover.png" alt="">
+                <img class="btn-hover__overlay" src="./assets/icons/cart_bottom.png" alt="">
+            </button>
+        </div>
+
+        <div class="mini-catalog__card">
+            <div class="mini-catalog__image">
+                <img src="./assets/images/mini__catalog/mini__calalog-3.png" alt="Абрикосовое варенье"
+                     class="mini-catalog__img-default">
+                <img src="./assets/images/mini__catalog/mini__calalog-3__hover.png" alt="Абрикосовое варенье"
+                     class="mini-catalog__img-hover">
+            </div>
+            <div class="mini-catalog__titles">
+                <div class="title_h3">Лимонное варенье</div>
+                <div class="mini-catalog__price">150 ₽ <span>/ 100 гр.</span></div>
+            </div>
+
+            <button class="btn-hover">
+                <p class="nav_title">Собрать в запасы</p>
+                <img class="btn-hover__overlay-default" src="./assets/icons/cart_bottom__hover.png" alt="">
+                <img class="btn-hover__overlay" src="./assets/icons/cart_bottom.png" alt="">
+            </button>
+        </div>
+
+        <div class="mini-catalog__card">
+            <div class="mini-catalog__image">
+                <img src="./assets/images/mini__catalog/mini__calalog-1.png" alt="Абрикосовое варенье"
+                     class="mini-catalog__img-default">
+                <img src="./assets/images/mini__catalog/mini__calalog-1__hover.png" alt="Абрикосовое варенье"
+                     class="mini-catalog__img-hover">
+            </div>
+            <div class="mini-catalog__titles">
+                <div class="title_h3">Малиновое варенье</div>
+                <div class="mini-catalog__price">150 ₽ <span>/ 100 гр.</span></div>
+            </div>
+
+            <button class="btn-hover">
+                <p class="nav_title">Собрать в запасы</p>
+                <img class="btn-hover__overlay-default" src="./assets/icons/cart_bottom__hover.png" alt="">
+                <img class="btn-hover__overlay" src="./assets/icons/cart_bottom.png" alt="">
+            </button>
+        </div>
+
+        <div class="mini-catalog__card">
+            <div class="mini-catalog__image">
+                <img src="./assets/images/mini__catalog/mini__calalog-5.png" alt="Абрикосовое варенье"
+                     class="mini-catalog__img-default">
+                <img src="./assets/images/mini__catalog/mini__calalog-5__hover.png" alt="Абрикосовое варенье"
+                     class="mini-catalog__img-hover">
+            </div>
+            <div class="mini-catalog__titles">
+                <div class="title_h3">Ожиновое варенье</div>
+                <div class="mini-catalog__price">150 ₽ <span>/ 100 гр.</span></div>
+            </div>
+
+            <button class="btn-hover">
+                <p class="nav_title">Собрать в запасы</p>
+                <img class="btn-hover__overlay-default" src="./assets/icons/cart_bottom__hover.png" alt="">
+                <img class="btn-hover__overlay" src="./assets/icons/cart_bottom.png" alt="">
+            </button>
+        </div>
+
+    </div>
+</section>
+
+<!-- ADVANTAGES -->
+<section class="advantages c-padding">
+    <h2 class="title_h2">ЧТО ДЕЛАЕТ НАШИ БАНКИ ОСОБЕННЫМИ</h2>
+
+    <div class="adv_container">
+        <div class="advantages__items container">
+            <div class="advantages__item">
+                <img class="advantages__item-img" src="./assets/images/advantages/1конка.png" alt="">
+                <div class="title_h4">Чистый состав</div>
+            </div>
+
+            <div class="advantages__item">
+                <img class="advantages__item-img" src="./assets/images/advantages/2иконка.png" alt="">
+                <div class="title_h4">Ручное варево</div>
+            </div>
+
+            <div class="advantages__item">
+                <img class="advantages__item-img" src="./assets/images/advantages/3иконка.png" alt="">
+                <div class="title_h4">Глубина вкуса</div>
+            </div>
+
+            <div class="advantages__item">
+                <img class="advantages__item-img" src="./assets/images/advantages/4иконка.png" alt="">
+                <div class="title_h4">Дух традиции</div>
+            </div>
+
+            <div class="advantages__item">
+                <img class="advantages__item-img" src="./assets/images/advantages/5иконка.png" alt="">
+                <div class="title_h4">Эмоции в банке</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- FEEDBACKS -->
+<section class="feedbacks c-padding" id="feedbacks">
+    <h2 class="title_h2">ГЛАГОЛЯТ ЛЮДИ ДОБРЫЕ</h2>
+
+    <div class="fb_container">
+        <div class="fb__items container">
+            <div class="fb__item">
+                <div class="fb__item-title">
+                    <span>Из каких ягод делается ваше варенье?</span>
+                    <div class="fb__arrow">
+                        <span class="fb__arrow-line"></span>
+                        <span class="fb__arrow-line"></span>
+                    </div>
+                </div>
+                <div class="fb__item-content">
+                    <p>Мы используем только сезонные ягоды из экологически чистых садов Татарстана. Каждая ягода
+                        собирается вручную в момент полной зрелости, чтобы сохранить максимум вкуса и пользы.</p>
+                </div>
+            </div>
+
+            <div class="fb__item">
+                <div class="fb__item-title">
+                    <span>Как долго хранится ваше варенье?</span>
+                    <div class="fb__arrow">
+                        <span class="fb__arrow-line"></span>
+                        <span class="fb__arrow-line"></span>
+                    </div>
+                </div>
+                <div class="fb__item-content">
+                    <p>Благодаря традиционной рецептуре и правильной пастеризации наше варенье хранится до 2 лет. После
+                        вскрытия рекомендуем хранить в холодильнике и употребить в течение 1 месяца.</p>
+                </div>
+            </div>
+
+            <div class="fb__item">
+                <div class="fb__item-title">
+                    <span>Есть ли в составе консерванты?</span>
+                    <div class="fb__arrow">
+                        <span class="fb__arrow-line"></span>
+                        <span class="fb__arrow-line"></span>
+                    </div>
+                </div>
+                <div class="fb__item-content">
+                    <p>Абсолютно нет! Мы используем только натуральные ингредиенты: ягоды, сахар и иногда немного
+                        лимонного сока для баланса вкуса. Никаких искусственных добавок, красителей или
+                        консервантов.</p>
+                </div>
+            </div>
+
+            <div class="fb__item">
+                <div class="fb__item-title">
+                    <span>Можно ли заказать варенье в подарок?</span>
+                    <div class="fb__arrow">
+                        <span class="fb__arrow-line"></span>
+                        <span class="fb__arrow-line"></span>
+                    </div>
+                </div>
+                <div class="fb__item-content">
+                    <p>Конечно! Мы предлагаем красивую подарочную упаковку и можем добавить персональную открытку с
+                        вашими пожеланиями. Идеальный гостинец для близких — вкусно, душевно и с заботой.</p>
+                </div>
+            </div>
+
+            <div class="fb__item">
+                <div class="fb__item-title">
+                    <span>Как происходит процесс варки?</span>
+                    <div class="fb__arrow">
+                        <span class="fb__arrow-line"></span>
+                        <span class="fb__arrow-line"></span>
+                    </div>
+                </div>
+                <div class="fb__item-content">
+                    <p>Мы варим варенье небольшими партиями в медных тазах на открытом огне, как это делали наши
+                        бабушки. Такой способ позволяет сохранить аромат ягод и получить идеальную консистенцию.</p>
+                </div>
+            </div>
+
+            <div class="fb__item">
+                <div class="fb__item-title">
+                    <span>Есть ли у вас варенье без сахара?</span>
+                    <div class="fb__arrow">
+                        <span class="fb__arrow-line"></span>
+                        <span class="fb__arrow-line"></span>
+                    </div>
+                </div>
+                <div class="fb__item-content">
+                    <p>Да, мы предлагаем линейку варенья на меду и стевии. Также есть варианты с пониженным содержанием
+                        сахара. Каждую банку мы маркируем специально для удобства выбора.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <img class="fb-print" src="./assets/images/feedback/fb_icon.png" alt="">
+</section>
+
+<!-- FOOTER -->
+<footer class="footer container">
+    <div class="footer_left">
+        <img src="./assets/images/logo.png" alt="" class="logo">
+
+        <div class="footer_contacts">
+            <div class="footer-tel">
+                <img src="./assets/icons/tel_icon.png" alt="">
+
+                <div class="text_info">
+                    <p class="nav_title nav-item__title">Контактный телефон</p>
+                    <a href="tel: 78123090934" class="title_h3">+ 7 (812) 309-09-34</a>
+                    <a href="tel: 78123090934" class="title_h3">+ 7 (965) 084-29-09</a>
+                </div>
+            </div>
+
+            <div class="footer-tel">
+                <img src="./assets/icons/mail_icon.png" alt="">
+                <div class="text_info">
+                    <p class="nav_title nav-item__title">Электронная почта</p>
+                    <a href="mailto: tustin78@mail.ru" class="title_h3">tustin78@mail.ru</a>
+                    <a href="mailto: info@tustin.ru" class="title_h3">gglinfo@tustin.ru</a>
+                </div>
+            </div>
+        </div>
+
+        <nav class="header-top__nav">
+            <a class="nav_title" href="#banner">Начало</a>
+            <div class="nav_title">Закрома</div>
+            <div class="nav_title">Про варево</div>
+            <a class="nav_title" href="#feedbacks">Голоса</a>
+            <div class="nav_title">Обрести банку</div>
+            <div class="nav_title">Оракул ягод</div>
+        </nav>
+
+        <p class="nav_title nav-item__title">Разработчик: Пирогова Дарья Денисовна</p>
+    </div>
+
+    <div class="footer_right">
+        <h2 class="title_h2">Первый заказ?</h2>
+        <p class="description">Узнавайте первым о скидках, предложениях и событиях еженедельно в своем <br>почтовом
+            ящике. Отпишитесь в любое время одним щелчком мыши.</p>
+
+        <input type="text" placeholder="Введите email..." class="search-input nav_title">
+        <button class="btn-hover">
+            <p class="nav_title">Подписаться на скидки</p>
+            <img class="btn-hover__overlay-default" src="./assets/icons/footer_bottom.png" alt="">
+            <img class="btn-hover__overlay" src="./assets/icons/footer_bottom__hover.png" alt="">
+        </button>
+
+        <p class="nav_title nav-item__title footer-desc">© 2025-2026, KTITS</p>
+    </div>
+</footer>
+
+<!-- Login Modal -->
+<div class="modal-overlay" id="loginModal">
+    <div class="modal-content">
+        <button class="modal-close" id="closeModal">
+            <span>×</span>
+        </button>
+
+        <div class="modal-tabs">
+            <button class="modal-tab active" data-tab="login">Войти</button>
+            <button class="modal-tab" data-tab="register">Регистрация</button>
+        </div>
+
+        <!-- Login Form -->
+        <form class="modal-form active" id="loginForm">
+            <h3 class="title_h3">Вход в аккаунт</h3>
+
+            <div class="form-group">
+                <label for="loginEmail" class="form-label">Email</label>
+                <input type="email" id="loginEmail" class="form-input" placeholder="ваш@email.com" required>
+            </div>
+
+            <div class="form-group">
+                <label for="loginPassword" class="form-label">Пароль</label>
+                <input type="password" id="loginPassword" class="form-input" placeholder="Введите пароль" required>
+            </div>
+
+            <button type="submit" class="btn-hover modal-submit-btn">
+                <p class="nav_title">Войти</p>
+                <img class="btn-hover__overlay-default" src="./assets/icons/cart_bottom__hover.png" alt="">
+                <img class="btn-hover__overlay" src="./assets/icons/cart_bottom.png" alt="">
+            </button>
+
+            <div class="form-divider">
+                <span>или войдите через</span>
+            </div>
+
+            <div class="social-login">
+                <button type="button" class="social-btn vk-btn">
+                    <img src="./assets/icons/vk-icon.png" alt="VK">
+                    VK
+                </button>
+                <button type="button" class="social-btn google-btn">
+                    <img src="./assets/icons/google-png.png" alt="Google">
+                    Google
+                </button>
+            </div>
+        </form>
+
+        <!-- Register Form -->
+        <form class="modal-form" id="registerForm">
+            <h3 class="title_h3">Создать аккаунт</h3>
+
+            <div class="form-group">
+                <label for="registerName" class="form-label">Имя</label>
+                <input type="text" id="registerName" class="form-input" placeholder="Ваше имя" required>
+            </div>
+
+            <div class="form-group">
+                <label for="registerEmail" class="form-label">Email</label>
+                <input type="email" id="registerEmail" class="form-input" placeholder="ваш@email.com" required>
+            </div>
+
+            <div class="form-group">
+                <label for="registerPassword" class="form-label">Пароль</label>
+                <input type="password" id="registerPassword" class="form-input" placeholder="Не менее 6 символов"
+                       required minlength="6">
+            </div>
+
+            <div class="form-group">
+                <label for="registerConfirmPassword" class="form-label">Подтвердите пароль</label>
+                <input type="password" id="registerConfirmPassword" class="form-input" placeholder="Повторите пароль"
+                       required>
+            </div>
+
+            <button type="submit" class="btn-hover modal-submit-btn">
+                <p class="nav_title">Зарегистрироваться</p>
+                <img class="btn-hover__overlay-default" src="./assets/icons/cart_bottom__hover.png" alt="">
+                <img class="btn-hover__overlay" src="./assets/icons/cart_bottom.png" alt="">
+            </button>
+
+            <div class="form-divider">
+                <span>или зарегистрируйтесь через</span>
+            </div>
+
+            <div class="social-login">
+                <button type="button" class="social-btn vk-btn">
+                    <img src="./assets/icons/vk-icon.png" alt="VK">
+                    VK
+                </button>
+                <button type="button" class="social-btn google-btn">
+                    <img src="./assets/icons/google-png.png" alt="Google">
+                    Google
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+</body>
+</html>
